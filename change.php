@@ -57,6 +57,6 @@ if($aid != ""){
 }
 else if($bid != ""){
     if(preg_match("/^\d*$/",$bid)){
-        echo '请输入正确的bv号'}
+        echo '请输入正确的bv号'
     }else{echo dec($bid);}
 }
