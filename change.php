@@ -50,13 +50,13 @@ function enc($x){
 }
 
 if($aid != ""){
-    if(preg_match("/^\d*$/",$fgid)){
+    if(preg_match("/^\d*$/",$aid)){
         echo enc($aid);
     }
     else{ echo '请输入正确的av号'}
 }
 else if($bid != ""){
-    if(preg_match("/^\d*$/",$fgid)){
+    if(preg_match("/^\d*$/",$bid)){
         echo '请输入正确的bv号'}
     }else{echo dec($bid);}
 }
