@@ -11,14 +11,11 @@ $s = [11,10,3,8,4,6];
 $add = 8728348608;
 $xor = 177451812;
 $tr = array();
-$i = range(0,57);
+$range = range(0,57);
 for ($z = 0;$z <= 58;$z++){
     global $table;
-    global $s;
-    global $add;
-    global $xor;
     global $tr; 
-    $tr[$table[$i[$z]]] = $i[$z];
+    $tr[$table[$range[$z]]] = $range[$z];
 }
 
 function dec($x){
@@ -27,13 +24,14 @@ function dec($x){
     global $add;
     global $xor;
     global $tr; 
-    $range = range(0,6);
+    $range = range(0,5);
     $r = 0;
 	for ($i = 0 ;$i < 6 ;$i++){
         $r += $tr[$x[$s[$range[$i]]]]*pow(58,$range[$i]);
     }
-	return ($r - $add)^$xor;
+	return ($r - $add) ^ $xor;
 }
+
 function enc($x){
     global $table;
     global $s;
@@ -51,12 +49,15 @@ function enc($x){
 
 if($aid != ""){
     if(preg_match("/^\d*$/",$aid)){
-        echo enc($aid);
+        echo  '{"code":"1","id":"'.enc($aid).'","msg":"转换成功!"}';
+    }else{
+         echo '{"code":"-1","id":"null","msg":"请输入正确的av号"}';
     }
-    else{ echo '请输入正确的av号'}
 }
 else if($bid != ""){
     if(preg_match("/^\d*$/",$bid)){
-        echo '请输入正确的bv号'
-    }else{echo dec($bid);}
+        echo '{"code":"-1","id":"null","msg":"请输入正确的bv号"}';
+    }else{
+        echo '{"code":"1","id":"av'.dec($bid).'","msg":"转换成功!"}';
+    }
 }
